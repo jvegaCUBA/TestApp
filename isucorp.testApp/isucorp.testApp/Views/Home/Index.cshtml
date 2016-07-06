@@ -1,0 +1,105 @@
+﻿@using isucorp.testApp.Resources
+@model IEnumerable<isucorp.testApp.DataBaseModel.Reservation>
+
+@{
+    ViewBag.Title = Resources.ORGANIZATION_NAME + "|" + Resources.RESERVATION_LIST_LABEL;
+    var orderBy = new List<SelectListItem>()
+                      {
+                          new SelectListItem() {Value = "", Text = Resources.SORT_BY_LABEL, Selected = true},
+                          new SelectListItem() {Value = "CreatedDate asc", Text = Resources.BY_DATE_ASCENDING, Selected = false},
+                          new SelectListItem() {Value = "CreatedDate desc", Text = Resources.BY_DATE_DESCENDING, Selected = false},
+                          new SelectListItem() {Value = "ContacName asc", Text = Resources.BY_ALPHABETIC_ASCENDING, Selected = false},
+                          new SelectListItem() {Value = "ContacName desc", Text = Resources.BY_ALPHABETIC_DESCENDING, Selected = false},
+                          new SelectListItem() {Value = "Ranking desc", Text = Resources.BY_RANKING, Selected = false}
+                      };
+}
+
+@section pageHeader
+{
+    <div class="row">
+        <div class="col-lg-5 col-md-3 hidden-xs">
+            <h2 class="page-header-color">@Resources.RESERVATION_LIST_LABEL</h2>
+        </div>
+        <div class="col-lg-5 col-md-3 col-xs-12">
+            @Html.ActionLink(Resources.CREATE_RESERVATION_LABEL, "Create", "Home", null, new { @class = "button-background" })
+        </div>
+    </div>
+}
+
+
+<p>
+
+    @Html.DropDownList("sortExp", orderBy, new { @class = "form-control" })
+</p>
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContacName)
+            </td>
+            <td>
+                <select class="ranking" object-id="@item.Id">
+                    <option value=""></option>
+                    @for (var i = 1; i <= 5; i++)
+                    {
+                        var selected = i == item.Ranking;
+
+                        <option value="@i" selected="@selected"> @i</option>
+                    }
+                </select>
+            </td>
+            <td>
+                @{
+                    var isFavorite = item.IsFavourite.HasValue && item.IsFavourite.Value ? "heart-on" : "heart-off";
+                }
+
+                <div class="favourite" objectId="@item.Id">
+                    @Resources.ADD_TO_FAVORITE_LABEL
+                    <span class="heart @isFavorite"></span>
+                </div>
+
+            </td>
+            <td>
+                @Html.ActionLink(Resources.EDIT_LABEL, "Edit", "Home", new { id = item.Id }, new { @class = "button-background" }) |
+                @Html.ActionLink(Resources.DELETE_LABEL, "Delete", "Home", new { id = item.Id }, new { @class = "button-background" })
+            </td>
+        </tr>
+                    }
+
+</table>
+
+<nav>
+    <ul class="pagination">
+        <li>
+            @{
+                var previous = ViewBag.currentPage > 1 ? Url.Action("Index", "Home", new { page = ViewBag.currentPage - 1 }) : "#";
+            }
+            <a href="@previous" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        @for (var i = 0; i < ViewBag.pagesCount; i++)
+        {
+            var isCurrentPage = ViewBag.currentPage == i + 1 ? "pagination-background" : "";
+            <li>@Html.ActionLink((i + 1).ToString(), "Index", "Home", new { page = i + 1 }, new { @class = isCurrentPage })</li>
+        }
+        <li>
+            @{
+                var next = ViewBag.currentPage == ViewBag.pagesCount ? "#" : Url.Action("Index", "Home", new { page = ViewBag.currentPage + 1 });
+            }
+            <a href="@next" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+@section styles{
+    @Styles.Render("~/Content/ranking")
+}
+@section scripts{
+    @Scripts.Render("~/bundles/isucorpList")
+    @Scripts.Render("~/bundles/ranking")
+}

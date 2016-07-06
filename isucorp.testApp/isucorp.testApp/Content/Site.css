@@ -1,0 +1,92 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding: 15px;
+    background-color: #ffffff;
+    color: #606060;
+    color: rgba(96, 96, 96, 0.9 );
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+@media (min-width: 768px) {
+    .banner {
+        background-image: url("Images/banner.png");
+        height: 120px;
+    }
+}
+
+.page-header-color {
+    color: red;
+}
+
+.page-header {
+    margin: 60px 0 0px !important;
+}
+
+a {
+    color: #ffffff;
+}
+
+ul.pagination a {
+    color: black;
+}
+
+a:hover {
+    color: #ffffff;
+    text-decoration: none;
+    color: black;
+}
+
+.pagination-background {
+    background-color: #9f9f9f !important;
+}
+
+.button-background {
+    background-color: #9f9f9f;
+    padding: 8px 15px;
+}
+
+.body-area {
+    background-color: #efefef;
+    padding-top: 15px;
+}
+
+.heart-on {
+    background-image: url("Images/heart-on.png");
+}
+
+.heart-off {
+    background-image: url("Images/heart-off.png");
+}
+
+.favourite {
+    cursor: pointer;
+}
+
+.heart {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+}
+
+.btn-send {
+    background-color: red;
+    color: white;
+}
