@@ -17,11 +17,14 @@
 @section pageHeader
 {
     <div class="row">
-        <div class="col-lg-5 col-md-3 hidden-xs">
+        <div class="col-lg-4 col-md-3 hidden-xs">
             <h2 class="page-header-color">@Resources.RESERVATION_LIST_LABEL</h2>
         </div>
-        <div class="col-lg-5 col-md-3 col-xs-12">
-            @Html.ActionLink(Resources.CREATE_RESERVATION_LABEL, "Create", "Home", null, new { @class = "button-background" })
+        <div class="col-lg-4 hidden-md hidden-xs">
+            
+        </div>
+        <div class="col-lg-4 col-md-3 hidden-xs" style="padding-top: 30px; position: relative; padding-right: 0px;">
+            @Html.ActionLink(Resources.CREATE_RESERVATION_LABEL, "Create", "Home", null, new { @class = "btn btn-default button-background", style="float: right" })
         </div>
     </div>
 }
@@ -31,11 +34,52 @@
 
     @Html.DropDownList("sortExp", orderBy, new { @class = "form-control" })
 </p>
-<table class="table">
 
-    @foreach (var item in Model)
-    {
-        <tr>
+
+@foreach (var item in Model)
+{
+    <div class="row clearfix background-row">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4 contact">
+            <div class="pull-left">
+                <img class="img-responsive" />
+            </div>
+            <div class="pull-left">
+                <span class="lead">@Html.DisplayFor(modelItem => item.ContacName)</span><br />
+                <span class="text-muted">@Html.DisplayFor(modelItem => item.CreatedDate)</span>
+            </div>
+
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 hidden-sm hidden-xs">
+            <span class="lead">@Resources.RANKING_LABEL</span>
+            <br />
+            <select class="ranking" object-id="@item.Id">
+                <option value=""></option>
+                @for (var i = 1; i <= 5; i++)
+                {
+                    var selected = i == item.Ranking;
+
+                    <option value="@i" selected="@selected"> @i</option>
+                }
+            </select>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4 favourite" objectId="@item.Id">
+            @{
+                var isFavorite = item.IsFavourite.HasValue && item.IsFavourite.Value ? "heart-on" : "heart-off";
+            }
+            <div class="pull-right heart @isFavorite"></div>
+            <div class="pull-right">
+                <span class="text-muted">@Resources.ADD_TO_FAVORITE_LABEL</span>&nbsp;
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 buttons">
+            @Html.ActionLink(Resources.EDIT_LABEL, "Edit", "Home", new { id = item.Id }, new { @class = "btn btn-default button-background" })
+
+        </div>
+
+    </div>
+
+
+    @*<tr>
             <td>
                 @Html.DisplayFor(modelItem => item.ContacName)
             </td>
@@ -51,9 +95,7 @@
                 </select>
             </td>
             <td>
-                @{
-                    var isFavorite = item.IsFavourite.HasValue && item.IsFavourite.Value ? "heart-on" : "heart-off";
-                }
+
 
                 <div class="favourite" objectId="@item.Id">
                     @Resources.ADD_TO_FAVORITE_LABEL
@@ -65,30 +107,32 @@
                 @Html.ActionLink(Resources.EDIT_LABEL, "Edit", "Home", new { id = item.Id }, new { @class = "button-background" }) |
                 @Html.ActionLink(Resources.DELETE_LABEL, "Delete", "Home", new { id = item.Id }, new { @class = "button-background" })
             </td>
-        </tr>
-                    }
+        </tr>*@
+                }
 
-</table>
+
 
 <nav>
     <ul class="pagination">
-        <li>
-            @{
-                var previous = ViewBag.currentPage > 1 ? Url.Action("Index", "Home", new { page = ViewBag.currentPage - 1 }) : "#";
-            }
+        @{
+            var previous = ViewBag.currentPage > 1 ? Url.Action("Index", "Home", new { page = ViewBag.currentPage - 1 }) : "#";
+        }
+        <li class="@(previous == "#" ? "disabled" : "")">
             <a href="@previous" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>
+
         @for (var i = 0; i < ViewBag.pagesCount; i++)
         {
             var isCurrentPage = ViewBag.currentPage == i + 1 ? "pagination-background" : "";
             <li>@Html.ActionLink((i + 1).ToString(), "Index", "Home", new { page = i + 1 }, new { @class = isCurrentPage })</li>
         }
-        <li>
-            @{
-                var next = ViewBag.currentPage == ViewBag.pagesCount ? "#" : Url.Action("Index", "Home", new { page = ViewBag.currentPage + 1 });
-            }
+
+        @{
+            var next = ViewBag.currentPage == ViewBag.pagesCount ? "#" : Url.Action("Index", "Home", new { page = ViewBag.currentPage + 1 });
+        }
+        <li class="@(next == "#"? "disabled" :"")">
             <a href="@next" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
             </a>

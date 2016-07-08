@@ -12,8 +12,8 @@
         <div class="col-lg-5 col-md-3 ">
             <h2 class="page-header-color">@Resources.CREATE_RESERVATION_LABEL</h2>
         </div>
-        <div class="col-lg-5 col-md-3 col-xs-12 hidden-xs" >
-            @Html.ActionLink(Resources.RESERVATION_LIST_LABEL, "Index", "Home", null, new { @class = "button-background" })
+        <div class="col-lg-5 col-md-3 col-xs-12 hidden-xs" style="padding-top: 30px; position: relative;">
+            @Html.ActionLink(Resources.RESERVATION_LIST_LABEL, "Index", "Home", null, new { @class = "btn btn-default button-background" })
         </div>
     </div>
 }
@@ -22,7 +22,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-inline">
+    <div class="form-horizontal">
         <div class="row">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">

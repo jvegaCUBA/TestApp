@@ -1,0 +1,487 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISUCorp|Reservation List - My ASP.NET Application</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/font-awesome/font-awesome.min.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet" />
+    <link href="Content/bootstrap-datepicker3.min.css" rel="stylesheet" />
+    <link href="Content/editor.css" rel="stylesheet" />
+
+
+    <link href="Content/bootstrap-stars.css" rel="stylesheet" />
+
+
+    <script src="Scripts/modernizr-2.6.2.js"></script>
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">ISUCorp</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/Language/ChangeLanguage?language=en">Englis</a></li>
+                    <li><a href="/Language/ChangeLanguage?language=es">Espa&#241;ol</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<div class="page-header">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-5 col-md-3 hidden-xs">
+                <h2 class="page-header-color">Reservation List</h2>
+            </div>
+            <div class="col-lg-5 col-md-3 col-xs-12" style="padding-top: 30px; position: relative;">
+                <a class="button-background" href="/Home/Create">Create Reservation</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="container">
+    <style>
+        .row {
+            margin: 10px 0px !important;
+        }
+    </style>
+    <div class="row clearfix">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4 contact">
+            <div class="pull-left">
+                <img class="img-responsive"/>
+            </div>
+            <div class="pull-left">
+                <span class="lead">Jorge</span><br/>
+                <span class="text-muted">Wednesday 2pm</span>
+            </div>
+
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 hidden-sm hidden-xs">
+            <span class="lead">Ranking</span>
+            <br/>
+            <select class="ranking" object-id="14">
+                <option value=""></option>
+                <option value="1"> 1</option>
+                <option value="2"> 2</option>
+                <option value="3"> 3</option>
+                <option value="4"> 4</option>
+                <option value="5"> 5</option>
+            </select>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4 favoritos">
+            <div class="pull-right heart heart-on"></div>
+            <div class="pull-right">
+                <span class="text-muted">Add favorite</span>&nbsp;
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 buttons">
+            <button class="btn btn-default">Edit</button>
+        </div>
+
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4 contact">
+            <div class="pull-left">
+                <img class="img-responsive" />
+            </div>
+            <div class="pull-left">
+                <span class="lead">Jorge</span><br />
+                <span class="text-muted">Wednesday 2pm</span>
+            </div>
+
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4 hidden-sm hidden-xs">
+            <span class="lead">Ranking</span>
+            <br />
+            <select class="ranking" object-id="14">
+                <option value=""></option>
+                <option value="1"> 1</option>
+                <option value="2"> 2</option>
+                <option value="3"> 3</option>
+                <option value="4"> 4</option>
+                <option value="5"> 5</option>
+            </select>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4 favoritos">
+            <div class="pull-right heart heart-on"></div>
+            <div class="pull-right">
+                <span class="text-muted">Add favorite</span>&nbsp;
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4 buttons">
+            <button class="btn btn-default">Edit</button>
+        </div>
+    </div>
+</div>
+
+    <div class="body-area">
+        <div class="container body-content">
+
+
+
+
+
+            <p>
+
+                <select class="form-control" id="sortExp" name="sortExp">
+                    <option selected="selected" value="">Sort by</option>
+                    <option value="CreatedDate asc">By Date Ascending</option>
+                    <option value="CreatedDate desc">By Date Descending</option>
+                    <option value="ContacName asc">By Alphabetic Ascending</option>
+                    <option value="ContacName desc">By Alphabetic Descending</option>
+                    <option value="Ranking desc">By Ranking</option>
+                </select>
+            </p>
+            <table class="table table-responsive">
+
+                <tr>
+                    <td>
+                        kaka
+                    </td>
+                    <td>
+                        <select class="ranking" object-id="14">
+                            <option value=""></option>
+                            <option value="1"> 1</option>
+                            <option value="2"> 2</option>
+                            <option value="3"> 3</option>
+                            <option value="4"> 4</option>
+                            <option value="5"> 5</option>
+                        </select>
+                    </td>
+                    <td>
+
+
+                        <div class="favourite" objectId="14">
+                            Add Favorite
+                            <span class="heart heart-on"></span>
+                        </div>
+
+                    </td>
+                    <td>
+                        <a class="button-background" href="/Home/Edit/14">Edit</a> |
+                        <a class="button-background" href="/Home/Delete/14">Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        edtghsfg
+                    </td>
+                    <td>
+                        <select class="ranking" object-id="13">
+                            <option value=""></option>
+                            <option value="1"> 1</option>
+                            <option value="2"> 2</option>
+                            <option value="3" selected="selected"> 3</option>
+                            <option value="4"> 4</option>
+                            <option value="5"> 5</option>
+                        </select>
+                    </td>
+                    <td>
+
+
+                        <div class="favourite" objectId="13">
+                            Add Favorite
+                            <span class="heart heart-on"></span>
+                        </div>
+
+                    </td>
+                    <td>
+                        <a class="button-background" href="/Home/Edit/13">Edit</a> |
+                        <a class="button-background" href="/Home/Delete/13">Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        agfgseth
+                    </td>
+                    <td>
+                        <select class="ranking" object-id="12">
+                            <option value=""></option>
+                            <option value="1"> 1</option>
+                            <option value="2"> 2</option>
+                            <option value="3"> 3</option>
+                            <option value="4" selected="selected"> 4</option>
+                            <option value="5"> 5</option>
+                        </select>
+                    </td>
+                    <td>
+
+
+                        <div class="favourite" objectId="12">
+                            Add Favorite
+                            <span class="heart heart-on"></span>
+                        </div>
+
+                    </td>
+                    <td>
+                        <a class="button-background" href="/Home/Edit/12">Edit</a> |
+                        <a class="button-background" href="/Home/Delete/12">Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        dfgsdfg
+                    </td>
+                    <td>
+                        <select class="ranking" object-id="11">
+                            <option value=""></option>
+                            <option value="1"> 1</option>
+                            <option value="2"> 2</option>
+                            <option value="3"> 3</option>
+                            <option value="4"> 4</option>
+                            <option value="5" selected="selected"> 5</option>
+                        </select>
+                    </td>
+                    <td>
+
+
+                        <div class="favourite" objectId="11">
+                            Add Favorite
+                            <span class="heart heart-on"></span>
+                        </div>
+
+                    </td>
+                    <td>
+                        <a class="button-background" href="/Home/Edit/11">Edit</a> |
+                        <a class="button-background" href="/Home/Delete/11">Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        fgdfg
+                    </td>
+                    <td>
+                        <select class="ranking" object-id="10">
+                            <option value=""></option>
+                            <option value="1"> 1</option>
+                            <option value="2"> 2</option>
+                            <option value="3"> 3</option>
+                            <option value="4" selected="selected"> 4</option>
+                            <option value="5"> 5</option>
+                        </select>
+                    </td>
+                    <td>
+
+
+                        <div class="favourite" objectId="10">
+                            Add Favorite
+                            <span class="heart heart-off"></span>
+                        </div>
+
+                    </td>
+                    <td>
+                        <a class="button-background" href="/Home/Edit/10">Edit</a> |
+                        <a class="button-background" href="/Home/Delete/10">Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        rtertert
+                    </td>
+                    <td>
+                        <select class="ranking" object-id="9">
+                            <option value=""></option>
+                            <option value="1"> 1</option>
+                            <option value="2"> 2</option>
+                            <option value="3"> 3</option>
+                            <option value="4"> 4</option>
+                            <option value="5" selected="selected"> 5</option>
+                        </select>
+                    </td>
+                    <td>
+
+
+                        <div class="favourite" objectId="9">
+                            Add Favorite
+                            <span class="heart heart-on"></span>
+                        </div>
+
+                    </td>
+                    <td>
+                        <a class="button-background" href="/Home/Edit/9">Edit</a> |
+                        <a class="button-background" href="/Home/Delete/9">Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        fgdfgdf
+                    </td>
+                    <td>
+                        <select class="ranking" object-id="8">
+                            <option value=""></option>
+                            <option value="1"> 1</option>
+                            <option value="2"> 2</option>
+                            <option value="3"> 3</option>
+                            <option value="4" selected="selected"> 4</option>
+                            <option value="5"> 5</option>
+                        </select>
+                    </td>
+                    <td>
+
+
+                        <div class="favourite" objectId="8">
+                            Add Favorite
+                            <span class="heart heart-on"></span>
+                        </div>
+
+                    </td>
+                    <td>
+                        <a class="button-background" href="/Home/Edit/8">Edit</a> |
+                        <a class="button-background" href="/Home/Delete/8">Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        fgafgsdfg
+                    </td>
+                    <td>
+                        <select class="ranking" object-id="7">
+                            <option value=""></option>
+                            <option value="1"> 1</option>
+                            <option value="2"> 2</option>
+                            <option value="3"> 3</option>
+                            <option value="4"> 4</option>
+                            <option value="5" selected="selected"> 5</option>
+                        </select>
+                    </td>
+                    <td>
+
+
+                        <div class="favourite" objectId="7">
+                            Add Favorite
+                            <span class="heart heart-on"></span>
+                        </div>
+
+                    </td>
+                    <td>
+                        <a class="button-background" href="/Home/Edit/7">Edit</a> |
+                        <a class="button-background" href="/Home/Delete/7">Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        wsgadfg
+                    </td>
+                    <td>
+                        <select class="ranking" object-id="6">
+                            <option value=""></option>
+                            <option value="1"> 1</option>
+                            <option value="2"> 2</option>
+                            <option value="3"> 3</option>
+                            <option value="4"> 4</option>
+                            <option value="5" selected="selected"> 5</option>
+                        </select>
+                    </td>
+                    <td>
+
+
+                        <div class="favourite" objectId="6">
+                            Add Favorite
+                            <span class="heart heart-on"></span>
+                        </div>
+
+                    </td>
+                    <td>
+                        <a class="button-background" href="/Home/Edit/6">Edit</a> |
+                        <a class="button-background" href="/Home/Delete/6">Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        dfdbsd
+                    </td>
+                    <td>
+                        <select class="ranking" object-id="5">
+                            <option value=""></option>
+                            <option value="1"> 1</option>
+                            <option value="2"> 2</option>
+                            <option value="3"> 3</option>
+                            <option value="4" selected="selected"> 4</option>
+                            <option value="5"> 5</option>
+                        </select>
+                    </td>
+                    <td>
+
+
+                        <div class="favourite" objectId="5">
+                            Add Favorite
+                            <span class="heart heart-off"></span>
+                        </div>
+
+                    </td>
+                    <td>
+                        <a class="button-background" href="/Home/Edit/5">Edit</a> |
+                        <a class="button-background" href="/Home/Delete/5">Delete</a>
+                    </td>
+                </tr>
+
+            </table>
+
+            <nav>
+                <ul class="pagination">
+
+                    <li class="disabled">
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                    <li><a class="pagination-background" href="/?page=1">1</a></li>
+                    <li><a class="" href="/?page=2">2</a></li>
+
+
+                    <li class="">
+                        <a href="/?page=2" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+
+            <hr />
+
+        </div>
+    </div>
+    <div class="footer-area footer">
+        <footer>
+            <p>&copy; 2016 - Jorge Vega</p>
+        </footer>
+    </div>
+    <script src="Scripts/jquery-1.10.2.js"></script>
+
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/respond.js"></script>
+    <script src="Scripts/bootstrap-datepicker.min.js"></script>
+    <script src="Scripts/editor.js"></script>
+
+
+
+    <script src="Scripts/isucorp.list.js"></script>
+
+    <script src="Scripts/jquery.barrating.js"></script>
+
+
+
+    <!-- Visual Studio Browser Link -->
+    <script type="application/json" id="__browserLink_initializationData">
+        {"appName":"Chrome","requestId":"449541e944254e54b2e7fb7aee32cf54"}
+    </script>
+    <script type="text/javascript" src="http://localhost:3063/8b62809037694fe28cb6d95a96bfef03/browserLink" async="async"></script>
+    <!-- End Browser Link -->
+
+</body>
+</html>

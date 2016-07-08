@@ -169,6 +169,15 @@ namespace isucorp.testApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Reservation.
+        /// </summary>
+        public static string EDIT_RESERVATION_LABEL {
+            get {
+                return ResourceManager.GetString("EDIT_RESERVATION_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This fiel mus contain data.
         /// </summary>
         public static string FIELD_REQUIRED_MSG {

@@ -153,6 +153,9 @@
   <data name="EDIT_LABEL" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="EDIT_RESERVATION_LABEL" xml:space="preserve">
+    <value>Edit Reservation</value>
+  </data>
   <data name="FIELD_REQUIRED_MSG" xml:space="preserve">
     <value>This fiel mus contain data</value>
   </data>

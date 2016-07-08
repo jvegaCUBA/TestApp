@@ -124,7 +124,7 @@
     <value>Fecha de Nacimiento</value>
   </data>
   <data name="BY_ALPHABETIC_ASCENDING" xml:space="preserve">
-    <value>Por Afabetico Ascendente</value>
+    <value>Por Afabético Ascendente</value>
   </data>
   <data name="BY_ALPHABETIC_DESCENDING" xml:space="preserve">
     <value>Por Alfabetico Descendente</value>
@@ -145,13 +145,16 @@
     <value>Tipo de Contacto</value>
   </data>
   <data name="CREATE_RESERVATION_LABEL" xml:space="preserve">
-    <value>Crear Reservacion</value>
+    <value>Crear Reservación</value>
   </data>
   <data name="DELETE_LABEL" xml:space="preserve">
     <value>Delete</value>
   </data>
   <data name="EDIT_LABEL" xml:space="preserve">
     <value>Editar</value>
+  </data>
+  <data name="EDIT_RESERVATION_LABEL" xml:space="preserve">
+    <value>Editar Reservación</value>
   </data>
   <data name="FIELD_REQUIRED_MSG" xml:space="preserve">
     <value>Este campo debe contener datos</value>
