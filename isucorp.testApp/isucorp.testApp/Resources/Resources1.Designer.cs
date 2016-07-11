@@ -196,6 +196,15 @@ namespace isucorp.testApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You has exceded the maximun length.
+        /// </summary>
+        public static string MAX_LENGHT_EXCEDED {
+            get {
+                return ResourceManager.GetString("MAX_LENGHT_EXCEDED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ISUCorp.
         /// </summary>
         public static string ORGANIZATION_NAME {
@@ -205,7 +214,16 @@ namespace isucorp.testApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Phone.
+        ///   Looks up a localized string similar to The phone number format is incorrect must be (###) ###-####.
+        /// </summary>
+        public static string PHONE_FORMAT_INCORRECT {
+            get {
+                return ResourceManager.GetString("PHONE_FORMAT_INCORRECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone (###) ###-####.
         /// </summary>
         public static string PHONE_LABEL {
             get {

@@ -117,76 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ADD_TO_FAVORITE_LABEL" xml:space="preserve">
-    <value>Agregar a Favorito</value>
+  <data name="Target" xml:space="preserve">
+    <value>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</value>
   </data>
-  <data name="BIRTH_DATE_LABEL" xml:space="preserve">
-    <value>Fecha de Nacimiento</value>
-  </data>
-  <data name="BY_ALPHABETIC_ASCENDING" xml:space="preserve">
-    <value>Por Afabético Ascendente</value>
-  </data>
-  <data name="BY_ALPHABETIC_DESCENDING" xml:space="preserve">
-    <value>Por Alfabetico Descendente</value>
-  </data>
-  <data name="BY_DATE_ASCENDING" xml:space="preserve">
-    <value>Por Fecha Ascendente</value>
-  </data>
-  <data name="BY_DATE_DESCENDING" xml:space="preserve">
-    <value>Por Fecha Descendente</value>
-  </data>
-  <data name="BY_RANKING" xml:space="preserve">
-    <value>Por Ranking</value>
-  </data>
-  <data name="CONTACT_NAME_LABEL" xml:space="preserve">
-    <value>Nombre de Contacto</value>
-  </data>
-  <data name="CONTACT_TYPE_LABEL" xml:space="preserve">
-    <value>Tipo de Contacto</value>
-  </data>
-  <data name="CREATE_RESERVATION_LABEL" xml:space="preserve">
-    <value>Crear Reservación</value>
-  </data>
-  <data name="DELETE_LABEL" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="EDIT_LABEL" xml:space="preserve">
-    <value>Editar</value>
-  </data>
-  <data name="EDIT_RESERVATION_LABEL" xml:space="preserve">
-    <value>Editar Reservación</value>
-  </data>
-  <data name="FIELD_REQUIRED_MSG" xml:space="preserve">
-    <value>Este campo debe contener datos</value>
-  </data>
-  <data name="INCORRECT_FORMAT_MSG" xml:space="preserve">
-    <value>Formato incorrecto</value>
-  </data>
-  <data name="MAX_LENGHT_EXCEDED" xml:space="preserve">
-    <value>Ha excedido el tamaño maximo</value>
-  </data>
-  <data name="ORGANIZATION_NAME" xml:space="preserve">
-    <value>ISUCorp</value>
-  </data>
-  <data name="PHONE_FORMAT_INCORRECT" xml:space="preserve">
-    <value>El formato del teléfono es incorrecto debe ser (###) ###-####</value>
-  </data>
-  <data name="PHONE_LABEL" xml:space="preserve">
-    <value>Teléfono (###) ###-####</value>
-  </data>
-  <data name="RANKING_LABEL" xml:space="preserve">
-    <value>Ranking</value>
-  </data>
-  <data name="RESERVATION_LIST_LABEL" xml:space="preserve">
-    <value>Lista de Reservaciones</value>
-  </data>
-  <data name="SEND_BUTTON_LABEL" xml:space="preserve">
-    <value>Enviar</value>
-  </data>
-  <data name="SORT_BY_LABEL" xml:space="preserve">
-    <value>Ordenar por</value>
-  </data>
-  <data name="TEXT_LOREN" xml:space="preserve">
-    <value>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</value>
+  <data name="DefaultSchema" xml:space="preserve">
+    <value>dbo</value>
   </data>
 </root>

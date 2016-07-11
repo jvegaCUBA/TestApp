@@ -162,11 +162,17 @@
   <data name="INCORRECT_FORMAT_MSG" xml:space="preserve">
     <value>Incorrect data format</value>
   </data>
+  <data name="MAX_LENGHT_EXCEDED" xml:space="preserve">
+    <value>You has exceded the maximun length</value>
+  </data>
   <data name="ORGANIZATION_NAME" xml:space="preserve">
     <value>ISUCorp</value>
   </data>
+  <data name="PHONE_FORMAT_INCORRECT" xml:space="preserve">
+    <value>The phone number format is incorrect must be (###) ###-####</value>
+  </data>
   <data name="PHONE_LABEL" xml:space="preserve">
-    <value>Phone</value>
+    <value>Phone (###) ###-####</value>
   </data>
   <data name="RANKING_LABEL" xml:space="preserve">
     <value>Ranking</value>

@@ -209,6 +209,10 @@
     <Compile Include="Migrations\201607032236500_NullableDates.Designer.cs">
       <DependentUpon>201607032236500_NullableDates.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607111910228_ContactMaxLength.cs" />
+    <Compile Include="Migrations\201607111910228_ContactMaxLength.Designer.cs">
+      <DependentUpon>201607111910228_ContactMaxLength.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\FavouriteModel.cs" />
     <Compile Include="Models\RankingModel.cs" />
@@ -329,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607032236500_NullableDates.resx">
       <DependentUpon>201607032236500_NullableDates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607111910228_ContactMaxLength.resx">
+      <DependentUpon>201607111910228_ContactMaxLength.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resources.es.resx">
       <Generator>ResXFileCodeGenerator</Generator>
