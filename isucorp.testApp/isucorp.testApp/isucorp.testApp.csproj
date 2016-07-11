@@ -236,6 +236,8 @@
     <Content Include="Content\editor.css" />
     <Content Include="Content\font-awesome\font-awesome.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Images\back-mobil.png" />
+    <Content Include="Content\Images\banner-movil.png" />
     <Content Include="Content\Images\calendar.png" />
     <Content Include="Content\Images\contact.png" />
     <Content Include="Content\Images\heart-off.png" />

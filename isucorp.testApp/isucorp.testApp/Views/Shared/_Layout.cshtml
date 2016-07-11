@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using isucorp.testApp.Resources
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -10,7 +11,7 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top banner">
+    <div class="navbar navbar-inverse navbar-fixed-top banner img-responsive">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -19,29 +20,33 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("ISUCorp", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @*<a href="@Url.Action("Index", "Home")">
+                    <h2>ISU</h2><h4>Corp</h4>
+                </a>*@
+                @RenderSection("mobilHeaderLabel", required: true)
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse pull-right">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Englis", "ChangeLanguage", "Language", new { language = "en" }, null)</li>
+                    <li>@Html.ActionLink("English", "ChangeLanguage", "Language", new { language = "en" }, null)</li>
                     <li>@Html.ActionLink("Español", "ChangeLanguage", "Language", new { language = "es" }, null)</li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="page-header">
+    <div class="page-header ">
         <div class="container">
             @RenderSection("pageHeader", required: false)
         </div>
     </div>
     <div class="body-area">
-        <div class="container body-content">
+        <div class="container">
             @RenderBody()
             <hr />
 
         </div>
     </div>
-    <div class="footer-area footer">
-        <footer>
+    <div class="footer-area footer  ">
+        <footer class=" container center-element center-block">
             <p>&copy; @DateTime.Now.Year - Jorge Vega</p>
         </footer>
     </div>

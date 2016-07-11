@@ -52,9 +52,12 @@
                             if (data.favourite) {
                                 $('.heart', element).removeClass('heart-off');
                                 $('.heart', element).addClass('heart-on');
+                                $('.label-favorite>span', element).removeClass('text-muted');
+
                             } else {
                                 $('.heart',element).removeClass('heart-on');
                                 $('.heart', element).addClass('heart-off');
+                                $('.label-favorite>span', element).addClass('text-muted');
                             }
                             
                         }

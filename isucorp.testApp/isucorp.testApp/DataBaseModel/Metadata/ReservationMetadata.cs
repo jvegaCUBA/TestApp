@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace isucorp.testApp.DataBaseModel.Metadata
 {
     using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
     using System.Web.UI.HtmlControls;
 
     using isucorp.testApp.Resources;
@@ -25,6 +26,8 @@ namespace isucorp.testApp.DataBaseModel.Metadata
         public bool? IsFavourite { get; set; }
         [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FIELD_REQUIRED_MSG")]
         public int ContactTypeId { get; set; }
+        [AllowHtml]
+        public string Text { get; set; }
         
     }
 }

@@ -19,10 +19,37 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
+/*input,
 select,
 textarea {
     max-width: 280px;
+}*/
+
+select, input[type="text"], input[type="tel"] {
+    background-repeat: no-repeat;
+    padding-left: 33px !important;
+    background-position: 5px;
+    -ms-border-radius: 0px;
+    border-radius: 0px;
+    -ms-background-size: 25px;
+    background-size: 25px;
+    -ms-opacity: 0.6;
+    opacity: 0.6;
+    height: 40px !important;
+}
+
+.Editor-editor {
+    background-color: #ffffff !important;
+}
+
+.content-components {
+    background-color: #f8f8f8;
+    padding-top: 10px;
+}
+
+.content-components-offset {
+    margin-right: -30px !important;
+    margin-left: -30px !important;
 }
 
 @media (min-width: 768px) {
@@ -38,13 +65,50 @@ textarea {
     }
 }
 
+.navbar-brand {
+    color: #ffffff !important;
+    font-size: 50px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #ffffff !important;
+}
+
 .page-header-color {
     color: #bb0000;
 }
 
 .page-header {
-    margin: 60px 0 0px !important;
+    margin: 70px 0 0px !important;
     background-color: #f8f8f8;
+    padding: 10px 0 10px 0;
+}
+
+@media(max-width: 767px) {
+    .page-header {
+        margin: 0px 0 0px !important;
+        background-color: #f8f8f8;
+        padding: 10px 0 10px 0;
+    }
+}
+
+.header-margin {
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+.header-padding {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.col-favorite-padding {
+    padding-top: 15px;
+}
+
+.col-buttons-padding {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 a {
@@ -63,13 +127,15 @@ a:hover {
 
 .pagination-background {
     background-color: #9f9f9f !important;
+    color: #efefef !important;
 }
 
 .button-background {
     background-color: #9f9f9f;
     padding: 8px 15px;
     -ms-border-radius: 0px;
-    border-radius: 0px
+    border-radius: 0px;
+    color: #efefef;
 }
 
 .body-area {
@@ -79,6 +145,10 @@ a:hover {
 
 .heart-on {
     background-image: url("Images/heart-on.png");
+}
+
+.favourite-on {
+    color: black;
 }
 
 .heart-off {
@@ -98,6 +168,8 @@ a:hover {
 .btn-send {
     background-color: #bb0000;
     color: white;
+    -ms-border-radius: 0px;
+    border-radius: 0px;
 }
 
 .footer-area {
@@ -114,6 +186,33 @@ select.form-control {
     border-radius: 0px !important;
 }
 
-#sortExp:after {
-    background-image: url("Images/sort.png")
+select {
+    background-image: url("Images/sort.png");
+}
+
+.center-element {
+    padding-top: 2%;
+}
+
+.input-contact {
+    background-image: url("Images/contact.png");
+}
+
+.input-contact-name {
+    background-image: url("Images/name.png");
+}
+
+.input-date {
+    background-image: url("Images/calendar.png");
+}
+
+.input-phone {
+    background-image: url("Images/phone.png");
+}
+
+@media (max-width : 767px) {
+    .navbar-inverse {
+        background-image: url("Images/banner-movil.png");
+        /*background-repeat: repeat;*/
+    }
 }

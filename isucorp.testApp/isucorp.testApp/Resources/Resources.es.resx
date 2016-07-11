@@ -180,4 +180,7 @@
   <data name="SORT_BY_LABEL" xml:space="preserve">
     <value>Ordenar por</value>
   </data>
+  <data name="TEXT_LOREN" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</value>
+  </data>
 </root>

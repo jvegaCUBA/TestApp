@@ -5,61 +5,85 @@
     ViewBag.Title = Resources.ORGANIZATION_NAME + "|" + Resources.EDIT_RESERVATION_LABEL;
 }
 
+@section mobilHeaderLabel
+{
+    @Html.ActionLink(Resources.RESERVATION_LIST_LABEL + "►", "Index", "Home", null, new { @class = "hidden-lg hidden-md hidden-sm header-margin pull-right", })
+}
+
 @section pageHeader
 {
+
     <div class="row">
-        <div class="col-lg-5 col-md-3 ">
+        <div class="col-lg-4 col-md-4 col-sm-6 ">
             <h2 class="page-header-color">@Resources.EDIT_RESERVATION_LABEL</h2>
         </div>
-        <div class="col-lg-5 col-md-3 col-xs-12 hidden-xs" style="padding-top: 30px; position: relative;">
-            @Html.ActionLink(Resources.RESERVATION_LIST_LABEL, "Index", "Home", new {page= ViewBag.currentPage }, new { @class = "btn btn-default button-background" })
+        <div class="col-lg-5 col-md-5 hidden-sm ">
+            <p>@Resources.TEXT_LOREN</p>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 hidden-xs header-padding">
+            @Html.ActionLink(Resources.RESERVATION_LIST_LABEL, "Index", "Home", null, new { @class = "btn btn-default button-background btn-block pull-right" })
         </div>
     </div>
+
 }
 
 
-@using (Html.BeginForm("Edit", "Home", FormMethod.Post))
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { id = "reservation-form" }))
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+    <div class="col-lg-12">
+        <div class="form-horizontal">
 
-        <div class="form-group">
-            <div class="col-md-10 col-lg-3 col-xs-12">
-                @Html.EditorFor(model => model.ContacName, new { htmlAttributes = new { @class = "form-control", @placeholder = Resources.CONTACT_NAME_LABEL } })
-                @Html.ValidationMessageFor(model => model.ContacName, "", new { @class = "text-danger" })
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+            <div class="form-group content-components">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    @Html.EditorFor(model => model.ContacName, new { htmlAttributes = new { @class = "form-control input-contact-name", @placeholder = Resources.CONTACT_NAME_LABEL } })
+                    @Html.ValidationMessageFor(model => model.ContacName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    @Html.DropDownList("ContactTypeId", (IEnumerable<SelectListItem>)ViewBag.ContacTypesList, new { @class = "form-control input-contact", @placeholder = Resources.CONTACT_TYPE_LABEL })
+                    @Html.ValidationMessageFor(model => model.ContactTypeId, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    @Html.EditorFor(model => model.Phone, new
+               {
+                   htmlAttributes = new
+                   {
+                       @class = "form-control input-phone",
+                       @placeholder = Resources.PHONE_LABEL
+                   }
+               })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    @Html.EditorFor(model => model.BirthDay, new { htmlAttributes = new { @class = "form-control input-date", @placeholder = Resources.BIRTH_DATE_LABEL, @type = "text" } })
+                    @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
+                </div>
             </div>
 
-            <div class="col-md-10 col-lg-3 col-xs-12">
-                @Html.DropDownList("ContactTypeId", (IEnumerable<SelectListItem>)ViewBag.ContacTypesList, new { @class = "form-control", @placeholder = Resources.CONTACT_TYPE_LABEL })
-                @Html.ValidationMessageFor(model => model.ContactTypeId, "", new { @class = "text-danger" })
+            <div class="form-group content-components-offset">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                    @Html.HiddenFor(model => model.Text)
+                    <div name="Text" id="Text" class="form-control"></div>
+                    @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+                </div>
             </div>
 
-            <div class="col-md-10 col-lg-3 col-xs-12">
-                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder = Resources.PHONE_LABEL } })
-                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="col-md-10 col-lg-3 col-xs-12">
-                @Html.EditorFor(model => model.BirthDay, new { htmlAttributes = new { @class = "form-control", @placeholder = Resources.BIRTH_DATE_LABEL, @type = "text" } })
-                @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="form-group content-components-offset">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pull-right">
+                    <input type="submit" value="@Resources.SEND_BUTTON_LABEL" class="btn btn-default btn-block btn-send " />
+                </div>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/isucorpCreate")
 }

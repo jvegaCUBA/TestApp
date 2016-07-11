@@ -248,5 +248,14 @@ namespace isucorp.testApp.Resources {
                 return ResourceManager.GetString("SORT_BY_LABEL", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        /// </summary>
+        public static string TEXT_LOREN {
+            get {
+                return ResourceManager.GetString("TEXT_LOREN", resourceCulture);
+            }
+        }
     }
 }

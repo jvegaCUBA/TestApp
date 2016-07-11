@@ -1060,7 +1060,7 @@ You should have received a copy of the GNU General Public License along with thi
 	       			menuBar.append(menuItem);
 	       		}	       		
 	       	}
-
+	       	
 	       	//For contextmenu	       	
 		    $(document.body).mousedown(function(event) {
 		        var target = $(event.target);
@@ -1110,6 +1110,7 @@ You should have received a copy of the GNU General Public License along with thi
 	       		}
 	       	});
 		},
+
 		createLinkContext: function(event,cMenuUl){
 			var cMenuli = $('<li/>').append($('<a/>',{
 				id:"rem_link",
