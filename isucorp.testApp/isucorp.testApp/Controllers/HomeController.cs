@@ -23,7 +23,7 @@
                  .ToList();
 
             this.ViewBag.totalRecords = totalRecords;
-            this.ViewBag.pagesCount = (totalRecords / rows) + 1;
+            this.ViewBag.pagesCount = (totalRecords / rows) + (totalRecords % rows) > 0 ? 1 : 0;
             this.ViewBag.currentPage = page;
             return this.View(reservations);
         }
@@ -121,9 +121,7 @@
             {
                 return this.Json(new
                 {
-                    success = false,
-                    //Buscar como devolver correctamente codigos de error en json
-
+                    success = false
                 });
             }
             var reservation = this.context.Reservations.Find(rankingModel.ReservationId);
@@ -147,9 +145,7 @@
             {
                 return this.Json(new
                 {
-                    success = false,
-                    //Buscar como devolver correctamente codigos de error en json
-
+                    success = false
                 });
             }
 

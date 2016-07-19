@@ -223,7 +223,7 @@ namespace isucorp.testApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Phone (###) ###-####.
+        ///   Looks up a localized string similar to Phone (##) ###-####.
         /// </summary>
         public static string PHONE_LABEL {
             get {

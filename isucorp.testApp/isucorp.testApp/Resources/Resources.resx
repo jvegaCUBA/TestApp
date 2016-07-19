@@ -172,7 +172,7 @@
     <value>The phone number format is incorrect must be (###) ###-####</value>
   </data>
   <data name="PHONE_LABEL" xml:space="preserve">
-    <value>Phone (###) ###-####</value>
+    <value>Phone (##) ###-####</value>
   </data>
   <data name="RANKING_LABEL" xml:space="preserve">
     <value>Ranking</value>

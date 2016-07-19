@@ -19,7 +19,7 @@ namespace isucorp.testApp.DataBaseModel.Metadata
         public string ContacName { get; set; }
         [MaxLength(12, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "MAX_LENGHT_EXCEDED")]
         [DataType(DataType.PhoneNumber)]
-        [RegularExpression(pattern: @"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessageResourceName = "PHONE_FORMAT_INCORRECT", ErrorMessageResourceType = typeof(Resources))]
+        [RegularExpression(pattern: @"^\(?([0-9]{2})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessageResourceName = "PHONE_FORMAT_INCORRECT", ErrorMessageResourceType = typeof(Resources))]
         public string Phone { get; set; }
         [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FIELD_REQUIRED_MSG")]
         [DataType(DataType.Date)]

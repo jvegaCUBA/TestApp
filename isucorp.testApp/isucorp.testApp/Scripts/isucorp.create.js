@@ -25,7 +25,7 @@
         };
 
         var allowOnlyNumbers = function (event) {
-            if (event.keyCode == 8 || event.keyCode == 40 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||  // Allow: backspace, delete, tab, escape, and enter
+            if (event.keyCode == 8 || event.keyCode == 41 || event.keyCode == 40 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||  // Allow: backspace, delete, tab, escape, and enter
                         (event.keyCode == 65 && event.ctrlKey === true) || // Allow: Ctrl+A
                         (event.keyCode == 67 && event.ctrlKey === true) || // Allow: Ctrl+C
                         (event.keyCode == 86 && event.ctrlKey === true) /*|| // Allow: Ctrl+C
