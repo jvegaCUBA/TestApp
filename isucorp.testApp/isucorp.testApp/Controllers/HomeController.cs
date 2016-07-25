@@ -23,7 +23,7 @@
         {
             if (!string.IsNullOrEmpty(sortExp))
             {
-                this.RedirectToAction("OrderBy", new { sortExp, page, rows });
+              return this.RedirectToAction("OrderBy", new { sortExp, page, rows });
             }
             long totalRecords;
             var reservations = await this.context.Reservations
@@ -168,7 +168,24 @@
             }
             reservation.Ranking = rankingModel.Ranking;
             this.context.Entry(reservation).State = EntityState.Modified;
-            await this.context.SaveChangesAsync();
+            bool saveFailed;
+            do
+            {
+                saveFailed = false;
+                try
+                {
+                    await this.context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    saveFailed = true;
+
+                    // Update original values from the database 
+                    var entry = ex.Entries.Single();
+                    entry.OriginalValues.SetValues(entry.GetDatabaseValues());
+
+                }
+            } while (saveFailed);
 
             return this.Json(new { success = true, ranking = reservation.Ranking });
         }
@@ -194,8 +211,25 @@
             }
             reservation.IsFavourite = favouriteModel.Favourite;
             this.context.Entry(reservation).State = EntityState.Modified;
-            await this.context.SaveChangesAsync();
+            bool saveFailed;
+            do
+            {
+                saveFailed = false;
+                try
+                {
+                    await this.context.SaveChangesAsync();
 
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    saveFailed = true;
+
+                    // Update original values from the database 
+                    var entry = ex.Entries.Single();
+                    entry.OriginalValues.SetValues(entry.GetDatabaseValues());
+
+                }
+            } while (saveFailed);
             return this.Json(new { success = true, favourite = reservation.IsFavourite });
         }
     }
