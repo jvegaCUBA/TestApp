@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
@@ -76,7 +77,26 @@
 
                 reservationContext.ModifiedDate = DateTime.Now;
                 this.context.Entry(reservation).State = EntityState.Modified;
-                await this.context.SaveChangesAsync();
+                bool saveFailed;
+                do
+                {
+                    saveFailed = false;
+                    try
+                    {
+                        await this.context.SaveChangesAsync();
+                    }
+                    catch (DbUpdateConcurrencyException ex)
+                    {
+                        saveFailed = true;
+
+                        // Update original values from the database 
+                        var entry = ex.Entries.Single();
+                        entry.OriginalValues.SetValues(entry.GetDatabaseValues());
+
+                    }
+                } while (saveFailed);
+
+
                 return this.RedirectToAction("Index");
             }
             return this.View(reservation);
