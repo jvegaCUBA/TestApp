@@ -41,7 +41,7 @@
             <h2 class="page-header-color">@Resources.RESERVATION_LIST_LABEL</h2>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 pull-left">
-            @Html.DropDownList("sortExp", orderBy, new { @class = "form-control" })
+            @Html.DropDownList("sortExp", orderBy, new { @class = "form-control", @data_bind= "value: selectedValue" })
         </div>
 
     </div>
@@ -66,7 +66,7 @@
             <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
                 <span class="lead">@Resources.RANKING_LABEL</span>
                 <br />
-                <select class="ranking" object-id="@item.Id">
+                <select class="ranking" object-id="@item.Id" style="visibility: hidden">
                     <option value=""></option>
                     @for (var i = 1; i <= 5; i++)
                 {
@@ -79,7 +79,7 @@
             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 favourite col-favorite-padding" objectId="@item.Id">
                 @{
                     var isFavorite = item.IsFavourite.HasValue && item.IsFavourite.Value ? "heart-on" : "heart-off";
-                    var labelOn = item.IsFavourite.HasValue && !item.IsFavourite.Value ? "text-muted" : "";
+                    var labelOn = (!item.IsFavourite.HasValue || !item.IsFavourite.Value) ? "text-muted" : "";
                 }
                 <div class="pull-right center-block heart @isFavorite"></div>
                 <div class="pull-right hidden-xs center-block label-favorite favourite-on">

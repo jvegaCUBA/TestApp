@@ -1,8 +1,8 @@
 ﻿$.extend({
-    isuCorpSite: new function() {
+    isuCorpSite: new function () {
         var self = this;
 
-        self.initialize = function() {
+        self.initialize = function () {
             attachBehavior();
 
             initEditor();
@@ -14,7 +14,7 @@
 
             $('div#Text').Editor();
 
-            $('#reservation-form').submit(function(event) {
+            $('#reservation-form').submit(function (event) {
                 $('#Text').val($('div#Text').Editor('getText'));
             });
 
@@ -26,12 +26,12 @@
 
         };
 
-        var createViewModel = function () {
-            this.contacName = ko.observable("");
-            this.birthDay = ko.observable("");
-            this.requiredInserted = function() {
-                return (this.contacName() != "" && this.birthDay() != "" );
-            };
+        function createViewModel() {
+            this.contactName = ko.observable($('#ContacName').val());
+            this.birthDay = ko.observable($('#BirthDay').val());
+            this.enableButton = ko.computed(function () {
+                return !(this.contactName() == '' || this.birthDay() == '');
+            }, this);
         }
 
         var allowOnlyNumbers = function (event) {
@@ -51,7 +51,7 @@
         };
 
         var allowDates = function (event) {
-            if (event.keyCode == 47  || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||  // Allow: backspace, delete, tab, escape, and enter
+            if (event.keyCode == 47 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||  // Allow: backspace, delete, tab, escape, and enter
                         (event.keyCode == 65 && event.ctrlKey === true) || // Allow: Ctrl+A
                         (event.keyCode == 67 && event.ctrlKey === true) || // Allow: Ctrl+C
                         (event.keyCode == 86 && event.ctrlKey === true) /*|| // Allow: Ctrl+C
@@ -66,10 +66,10 @@
             }
         };
 
-        var initEditor = function() {
+        var initEditor = function () {
             $('div#Text').Editor('setText', $('#Text').val());
         }
-        
+
     }
 });
 

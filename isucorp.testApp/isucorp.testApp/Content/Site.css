@@ -165,11 +165,19 @@ a:hover {
     height: 26px;
 }
 
+.btn-send[disabled] {
+    background-color:  #bb0000!important;
+}
+
 .btn-send {
-    background-color: #bb0000;
+    background-color: #bb0000 ;
     color: white;
     -ms-border-radius: 0px;
     border-radius: 0px;
+}
+
+footer {
+    text-align: center;
 }
 
 .footer-area {

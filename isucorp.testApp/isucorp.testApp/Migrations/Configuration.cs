@@ -22,9 +22,9 @@ namespace isucorp.testApp.Migrations
             //  to avoid creating duplicate seed data. E.g.
             context.ContactTypes.AddOrUpdate(
               p => p.Name,
-              new ContactType { Name = "ContancType1" },
-              new ContactType { Name = "ContancType2" },
-              new ContactType { Name = "ContancType3" }
+              new ContactType { Name = "Contanct Type 1" },
+              new ContactType { Name = "Contanct Type 2" },
+              new ContactType { Name = "Contanct Type 3" }
             );
         }
     }
