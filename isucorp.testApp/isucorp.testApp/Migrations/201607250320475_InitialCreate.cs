@@ -21,21 +21,27 @@ namespace isucorp.testApp.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        ContacName = c.String(),
-                        Phone = c.String(),
+                        RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        ContacName = c.String(nullable: false, maxLength: 30),
+                        Phone = c.String(maxLength: 12),
                         BirthDay = c.DateTime(nullable: false),
-                        ContactType_Id = c.Int(),
+                        Text = c.String(),
+                        Ranking = c.Int(),
+                        IsFavourite = c.Boolean(),
+                        CreatedDate = c.DateTime(),
+                        ModifiedDate = c.DateTime(),
+                        ContactTypeId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.ContactTypes", t => t.ContactType_Id)
-                .Index(t => t.ContactType_Id);
+                .ForeignKey("dbo.ContactTypes", t => t.ContactTypeId, cascadeDelete: true)
+                .Index(t => t.ContactTypeId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Reservations", "ContactType_Id", "dbo.ContactTypes");
-            DropIndex("dbo.Reservations", new[] { "ContactType_Id" });
+            DropForeignKey("dbo.Reservations", "ContactTypeId", "dbo.ContactTypes");
+            DropIndex("dbo.Reservations", new[] { "ContactTypeId" });
             DropTable("dbo.Reservations");
             DropTable("dbo.ContactTypes");
         }

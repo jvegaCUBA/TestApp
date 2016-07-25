@@ -31,6 +31,8 @@ namespace isucorp.testApp.DataBaseModel.Metadata
         public int ContactTypeId { get; set; }
         [AllowHtml]
         public string Text { get; set; }
+        [Timestamp]
+        public byte RowVersion { get; set; }
 
     }
 }

@@ -1,26 +1,33 @@
 ﻿namespace isucorp.testApp.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
     using System.Net;
+    using System.Threading.Tasks;
     using System.Web.Mvc;
 
     using isucorp.testApp.DataBaseModel;
     using isucorp.testApp.Models;
     using isucorp.testApp.Utilities;
 
+    using Microsoft.Ajax.Utilities;
+
     public class HomeController : Controller
     {
         private readonly DataContext context = new DataContext();
 
-        public ActionResult Index(string sortExp, int page = 1, int rows = 10)
+        public async Task<ActionResult> Index(string sortExp, int page = 1, int rows = 10)
         {
-            var sorter = EntitySorter<Reservation>.SortExpression(!string.IsNullOrEmpty(sortExp) ? sortExp : "CreatedDate desc");
+            if (!string.IsNullOrEmpty(sortExp))
+            {
+                this.RedirectToAction("OrderBy", new { sortExp, page, rows });
+            }
             long totalRecords;
-            var reservations = sorter.Sort(this.context.Reservations)
-                 .GetPage(page, rows, out totalRecords)
-                 .ToList();
+            var reservations = await this.context.Reservations
+                .OrderByDescending(m => m.CreatedDate)
+                .GetPage(page, rows, out totalRecords).ToListAsync();
 
             this.ViewBag.totalRecords = totalRecords;
             this.ViewBag.pagesCount = (totalRecords / rows) + (totalRecords % rows) > 0 ? 1 : 0;
@@ -28,33 +35,36 @@
             return this.View(reservations);
         }
 
-        public ActionResult Edit(int? id)
+        public async Task<ActionResult> OrderBy(string sortExp, int page = 1, int rows = 10)
+        {
+            var sorter = EntitySorter<Reservation>.SortExpression(!string.IsNullOrEmpty(sortExp) ? sortExp : "CreatedDate desc");
+            long totalRecords;
+            var list = await sorter.Sort(this.context.Reservations)
+                .GetPage(page, rows, out totalRecords).ToListAsync();
+            this.ViewBag.totalRecords = totalRecords;
+            this.ViewBag.pagesCount = (totalRecords / rows) + (totalRecords % rows) > 0 ? 1 : 0;
+            this.ViewBag.currentPage = page;
+            return this.View("Index", list);
+        }
+
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var reservation = this.context.Reservations.Find(id);
+            var reservation = await this.context.Reservations.FindAsync(id);
             if (reservation == null)
             {
                 return this.HttpNotFound();
             }
-            var contacTypes =
-                this.context.ContactTypes.ToList()
-                    .Select(
-                        m =>
-                        new SelectListItem
-                        {
-                            Text = m.Name,
-                            Value = m.Id.ToString(),
-                            Selected = m.Id == reservation.ContactTypeId
-                        });
+            var contacTypes = await this.ContacTypesListItems(reservation.ContactType.Id);
             this.ViewBag.ContacTypesList = contacTypes;
             return this.View(reservation);
         }
 
         [HttpPost]
-        public ActionResult Edit(Reservation reservation)
+        public async Task<ActionResult> Edit(Reservation reservation)
         {
             if (this.ModelState.IsValid)
             {
@@ -66,23 +76,28 @@
 
                 reservationContext.ModifiedDate = DateTime.Now;
                 this.context.Entry(reservation).State = EntityState.Modified;
-                this.context.SaveChanges();
+                await this.context.SaveChangesAsync();
                 return this.RedirectToAction("Index");
             }
             return this.View(reservation);
         }
 
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            var contacTypes =
-                this.context.ContactTypes.ToList()
-                    .Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() });
+            var contacTypes = await this.ContacTypesListItems();
             this.ViewBag.ContacTypesList = contacTypes;
             return this.View();
         }
 
+        private async Task<IEnumerable<SelectListItem>> ContacTypesListItems(int selectedId = -1)
+        {
+            var contacTypesEntities = await this.context.ContactTypes.ToListAsync();
+            var contacTypes = contacTypesEntities.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString(), Selected = m.Id == selectedId });
+            return contacTypes;
+        }
+
         [HttpPost]
-        public ActionResult Create(Reservation reservation)
+        public async Task<ActionResult> Create(Reservation reservation)
         {
             if (this.ModelState.IsValid)
             {
@@ -90,14 +105,14 @@
                 this.context.Reservations.Add(reservation);
                 this.context.Entry(reservation).State = EntityState.Added;
 
-                this.context.SaveChanges();
+                await this.context.SaveChangesAsync();
                 return this.RedirectToAction("Index");
             }
             return this.View(reservation);
         }
 
         [HttpGet]
-        public ActionResult Delete(int? id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -109,13 +124,13 @@
                 return this.HttpNotFound();
             }
             this.context.Reservations.Remove(entity);
-            this.context.SaveChanges();
+            await this.context.SaveChangesAsync();
 
             return this.RedirectToAction("Index");
         }
 
         [HttpPost]
-        public JsonResult SetRanking([Bind(Include = "ReservationId,Ranking")]RankingModel rankingModel)
+        public async Task<JsonResult> SetRanking([Bind(Include = "ReservationId,Ranking")]RankingModel rankingModel)
         {
             if (!this.ModelState.IsValid)
             {
@@ -124,7 +139,7 @@
                     success = false
                 });
             }
-            var reservation = this.context.Reservations.Find(rankingModel.ReservationId);
+            var reservation = await this.context.Reservations.FindAsync(rankingModel.ReservationId);
             if (reservation == null)
             {
                 return
@@ -133,13 +148,13 @@
             }
             reservation.Ranking = rankingModel.Ranking;
             this.context.Entry(reservation).State = EntityState.Modified;
-            this.context.SaveChanges();
+            await this.context.SaveChangesAsync();
 
             return this.Json(new { success = true, ranking = reservation.Ranking });
         }
 
         [HttpPost]
-        public JsonResult SetToFavourite([Bind(Include = "ReservationId,Favourite")] FavouriteModel favouriteModel)
+        public async Task<JsonResult> SetToFavourite([Bind(Include = "ReservationId,Favourite")] FavouriteModel favouriteModel)
         {
             if (!this.ModelState.IsValid)
             {
@@ -149,7 +164,7 @@
                 });
             }
 
-            var reservation = this.context.Reservations.Find(favouriteModel.ReservationId);
+            var reservation = await this.context.Reservations.FindAsync(favouriteModel.ReservationId);
 
             if (reservation == null)
             {
@@ -159,7 +174,7 @@
             }
             reservation.IsFavourite = favouriteModel.Favourite;
             this.context.Entry(reservation).State = EntityState.Modified;
-            this.context.SaveChanges();
+            await this.context.SaveChangesAsync();
 
             return this.Json(new { success = true, favourite = reservation.IsFavourite });
         }

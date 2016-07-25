@@ -147,6 +147,9 @@
   <data name="CREATE_RESERVATION_LABEL" xml:space="preserve">
     <value>Crear Reservación</value>
   </data>
+  <data name="DATE_FORMAT" xml:space="preserve">
+    <value>dd/mm/yyyy</value>
+  </data>
   <data name="DELETE_LABEL" xml:space="preserve">
     <value>Delete</value>
   </data>

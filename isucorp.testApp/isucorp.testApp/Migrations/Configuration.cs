@@ -20,14 +20,12 @@ namespace isucorp.testApp.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
-            //
             context.ContactTypes.AddOrUpdate(
-              p => p.Name, 
-              new ContactType() { Name = "Type 1" },
-              new ContactType() { Name = "Type 2" },
-              new ContactType() { Name = "Type 3" }
+              p => p.Name,
+              new ContactType { Name = "ContancType1" },
+              new ContactType { Name = "ContancType2" },
+              new ContactType { Name = "ContancType3" }
             );
-
         }
     }
 }

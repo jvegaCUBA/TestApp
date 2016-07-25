@@ -7,13 +7,13 @@ namespace isucorp.testApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ContactMaxLength : IMigrationMetadata
+    public sealed partial class AddingStoredProcedures : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ContactMaxLength));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddingStoredProcedures));
         
         string IMigrationMetadata.Id
         {
-            get { return "201607111910228_ContactMaxLength"; }
+            get { return "201607250322406_AddingStoredProcedures"; }
         }
         
         string IMigrationMetadata.Source

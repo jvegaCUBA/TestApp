@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace isucorp.testApp.DataBaseModel
 {
@@ -10,6 +6,6 @@ namespace isucorp.testApp.DataBaseModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual IList<Reservation> Reservations { get; set; } 
+        public virtual List<Reservation> Reservations { get; set; } 
     }
 }

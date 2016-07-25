@@ -22,7 +22,17 @@
 
             $('#Phone').bind('keypress', allowOnlyNumbers);
 
+            ko.applyBindings(new createViewModel());
+
         };
+
+        var createViewModel = function () {
+            this.contacName = ko.observable("");
+            this.birthDay = ko.observable("");
+            this.requiredInserted = function() {
+                return (this.contacName() != "" && this.birthDay() != "" );
+            };
+        }
 
         var allowOnlyNumbers = function (event) {
             if (event.keyCode == 8 || event.keyCode == 41 || event.keyCode == 40 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||  // Allow: backspace, delete, tab, escape, and enter

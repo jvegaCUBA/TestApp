@@ -7,10 +7,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace isucorp.testApp.DataBaseModel
 {
+    using System.ComponentModel.DataAnnotations.Schema;
+
     
     public partial class Reservation
     {
         public int Id { get; set; }
+        public byte[] RowVersion { get; set; }
         public string ContacName { get; set; }
         public string Phone { get; set; }
         public DateTime BirthDay { get; set; }

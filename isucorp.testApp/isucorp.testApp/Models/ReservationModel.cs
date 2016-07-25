@@ -14,6 +14,6 @@ namespace isucorp.testApp.DataBaseModel
     [MetadataType(typeof(ReservationMetadata))]
     public partial class Reservation
     {
-        
+
     }
 }

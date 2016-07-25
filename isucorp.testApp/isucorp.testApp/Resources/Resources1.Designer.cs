@@ -151,6 +151,15 @@ namespace isucorp.testApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to mm/dd/yyyy.
+        /// </summary>
+        public static string DATE_FORMAT {
+            get {
+                return ResourceManager.GetString("DATE_FORMAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string DELETE_LABEL {

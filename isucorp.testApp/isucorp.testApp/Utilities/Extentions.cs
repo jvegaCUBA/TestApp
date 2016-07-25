@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace isucorp.testApp.Utilities
 {
+    using System.Data.Entity;
+
     public static class Extentions
     {
         public static IQueryable<T> GetPage<T>(this IQueryable<T> queryable, int page, int records, out long total)

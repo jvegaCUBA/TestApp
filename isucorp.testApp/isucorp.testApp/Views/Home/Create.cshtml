@@ -20,7 +20,7 @@
         <div class="col-lg-5 col-md-5 hidden-sm ">
             <p>@Resources.TEXT_LOREN</p>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 hidden-xs header-padding" >
+        <div class="col-lg-3 col-md-3 col-sm-6 hidden-xs header-padding">
             @Html.ActionLink(Resources.RESERVATION_LIST_LABEL, "Index", "Home", null, new { @class = "btn btn-default button-background btn-block pull-right" })
         </div>
     </div>
@@ -35,7 +35,15 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group content-components">
                 <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                    @Html.EditorFor(model => model.ContacName, new { htmlAttributes = new { @class = "form-control input-contact-name", @placeholder = Resources.CONTACT_NAME_LABEL } })
+                    @Html.EditorFor(model => model.ContacName, new
+               {
+                   htmlAttributes = new
+                   {
+                       @class = "form-control input-contact-name",
+                       @placeholder = Resources.CONTACT_NAME_LABEL,
+                       @data_bind = "text: contacName"
+                   }
+               })
                     @Html.ValidationMessageFor(model => model.ContacName, "", new { @class = "text-danger" })
                 </div>
 
@@ -45,12 +53,22 @@
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control input-phone", @placeholder = Resources.PHONE_LABEL } })
+                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control input-phone", @placeholder = Resources.PHONE_LABEL, } })
                     @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                    @Html.EditorFor(model => model.BirthDay, new { htmlAttributes = new { @class = "form-control input-date", @placeholder = Resources.BIRTH_DATE_LABEL, @type = "text" } })
+                    @Html.EditorFor(model => model.BirthDay, new
+               {
+                   htmlAttributes = new
+                   {
+                       @class = "form-control input-date",
+                       @placeholder = Resources.BIRTH_DATE_LABEL,
+                       @type = "text",
+                       @data_date_format = Resources.DATE_FORMAT,
+                       @data_bind = "text: birthDay"
+                   }
+               })
                     @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -65,7 +83,7 @@
 
             <div class="form-group content-components-offset">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pull-right">
-                    <input type="submit" value="@Resources.SEND_BUTTON_LABEL" class="btn btn-default btn-block btn-send " />
+                    <input type="submit" data-bind="enable: requiredInserted()" value="@Resources.SEND_BUTTON_LABEL" class="btn btn-default btn-block btn-send " />
                 </div>
             </div>
         </div>

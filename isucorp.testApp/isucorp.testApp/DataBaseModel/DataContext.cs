@@ -15,18 +15,35 @@ namespace isucorp.testApp.DataBaseModel
         public DataContext()
             : base("name=test_db")
         {
+            //Database.SetInitializer<DataContext>(new DropCreateDatabaseAlways<DataContext>());
         }
 
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
-         public virtual DbSet<Reservation> Reservations { get; set; }
         public virtual DbSet<ContactType> ContactTypes { get; set; }
-    }
+        public virtual DbSet<Reservation> Reservations { get; set; }
 
-    //public class MyEntity
-    //{
-    //    public int Id { get; set; }
-    //    public string Name { get; set; }
-    //}
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+
+            modelBuilder.Entity<ContactType>().MapToStoredProcedures(s =>
+                {
+                    s.Insert(i => i.HasName("ContactTypeInsert"));
+                    s.Update(u => u.HasName("ContactTypeUpdate"));
+                    s.Delete(d => d.HasName("ContactTypeDelete"));
+                });
+            modelBuilder.Entity<Reservation>().MapToStoredProcedures(s =>
+                {
+                    s.Insert(i => i.HasName("ReservationInsert"));
+                    s.Update(u => u.HasName("ReservationUpdate"));
+                    s.Delete(d => d.HasName("ReservationDelete"));
+                });
+
+            //modelBuilder.Entity<ContactType>().MapToStoredProcedures();
+            //modelBuilder.Entity<Reservation>().MapToStoredProcedures();
+            //modelBuilder.Types().Configure(t => t.MapToStoredProcedures());
+
+        }
+    }
 }

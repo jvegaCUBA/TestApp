@@ -167,51 +167,23 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="DataBaseModel\ContactType.cs" />
+    <Compile Include="DataBaseModel\DataContextInitializer.cs" />
     <Compile Include="DataBaseModel\Metadata\ReservationMetadata.cs" />
     <Compile Include="DataBaseModel\Reservation.cs" />
     <Compile Include="DataBaseModel\DataContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606300410503_InitialCreate.cs" />
-    <Compile Include="Migrations\201606300410503_InitialCreate.Designer.cs">
-      <DependentUpon>201606300410503_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201607250320475_InitialCreate.cs" />
+    <Compile Include="Migrations\201607250320475_InitialCreate.Designer.cs">
+      <DependentUpon>201607250320475_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606301704333_addReservationFields.cs" />
-    <Compile Include="Migrations\201606301704333_addReservationFields.Designer.cs">
-      <DependentUpon>201606301704333_addReservationFields.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607021240419_updateEntities.cs" />
-    <Compile Include="Migrations\201607021240419_updateEntities.Designer.cs">
-      <DependentUpon>201607021240419_updateEntities.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607021513132_ContactTypeIdScafolded.cs" />
-    <Compile Include="Migrations\201607021513132_ContactTypeIdScafolded.Designer.cs">
-      <DependentUpon>201607021513132_ContactTypeIdScafolded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607021531050_AddingTextField.cs" />
-    <Compile Include="Migrations\201607021531050_AddingTextField.Designer.cs">
-      <DependentUpon>201607021531050_AddingTextField.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607030256236_Test.cs" />
-    <Compile Include="Migrations\201607030256236_Test.Designer.cs">
-      <DependentUpon>201607030256236_Test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607032220391_AddingCreatedDate.cs" />
-    <Compile Include="Migrations\201607032220391_AddingCreatedDate.Designer.cs">
-      <DependentUpon>201607032220391_AddingCreatedDate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607032236500_NullableDates.cs" />
-    <Compile Include="Migrations\201607032236500_NullableDates.Designer.cs">
-      <DependentUpon>201607032236500_NullableDates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607111910228_ContactMaxLength.cs" />
-    <Compile Include="Migrations\201607111910228_ContactMaxLength.Designer.cs">
-      <DependentUpon>201607111910228_ContactMaxLength.cs</DependentUpon>
+    <Compile Include="Migrations\201607250322406_AddingStoredProcedures.cs" />
+    <Compile Include="Migrations\201607250322406_AddingStoredProcedures.Designer.cs">
+      <DependentUpon>201607250322406_AddingStoredProcedures.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\FavouriteModel.cs" />
@@ -275,11 +247,14 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-3.4.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -310,32 +285,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606300410503_InitialCreate.resx">
-      <DependentUpon>201606300410503_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607250320475_InitialCreate.resx">
+      <DependentUpon>201607250320475_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606301704333_addReservationFields.resx">
-      <DependentUpon>201606301704333_addReservationFields.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607021240419_updateEntities.resx">
-      <DependentUpon>201607021240419_updateEntities.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607021513132_ContactTypeIdScafolded.resx">
-      <DependentUpon>201607021513132_ContactTypeIdScafolded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607021531050_AddingTextField.resx">
-      <DependentUpon>201607021531050_AddingTextField.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607030256236_Test.resx">
-      <DependentUpon>201607030256236_Test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607032220391_AddingCreatedDate.resx">
-      <DependentUpon>201607032220391_AddingCreatedDate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607032236500_NullableDates.resx">
-      <DependentUpon>201607032236500_NullableDates.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607111910228_ContactMaxLength.resx">
-      <DependentUpon>201607111910228_ContactMaxLength.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607250322406_AddingStoredProcedures.resx">
+      <DependentUpon>201607250322406_AddingStoredProcedures.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resources.es.resx">
       <Generator>ResXFileCodeGenerator</Generator>
